@@ -1,0 +1,5 @@
+# Object File
+*.o
+
+# Credential Files
+*.properties
