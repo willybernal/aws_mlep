@@ -14,8 +14,8 @@ ep.initEC2Client();
 %% Init Instances
 % Create Instance if there is no instance on AWS
 numInst = 4;
-typeInst = 't1.micro';
-amiCode = 'ami-e5d5278e';
+typeInst = 't2.medium';
+amiCode = 'ami-b98c77d2';
 % amiCode = 'ami-33aef35a';
 [status, msg, EC2_info] = ep.initAwsInstance(numInst,typeInst,amiCode);
 

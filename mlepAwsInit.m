@@ -19,7 +19,7 @@ keyPath = '/home/avenger/Documents/Aws/mlepKey.pem';
 
 % Security Group Name
 %secGroup = 'YOUR SECURITY GROUP NAME';
-secGroup = 'default';
+secGroup = 'mlep-sec-group';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DO NOT MODIFY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % MLEP-AWS HOME 
