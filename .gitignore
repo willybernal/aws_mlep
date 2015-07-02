@@ -5,5 +5,7 @@
 *.properties
 *.pem
 
+.git-credentials
+
 
 
