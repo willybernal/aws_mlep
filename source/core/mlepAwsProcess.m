@@ -141,8 +141,8 @@ classdef mlepAwsProcess < handle
             status = 0;
         end
         %%==============================================================
-        function status = moveFileOnAWSCosim(obj, rFolder, feed,paraStatus)
-            mlepMoveFileOnAWSCosim(obj.ec2Info, obj.keyPath, rFolder, feed, paraStatus);
+        function status = moveFileOnAWSCosim(obj, lFolder, rFolder, feed, paraStatus)
+            mlepMoveFileOnAWSCosim(obj.ec2Info, obj.keyPath, lFolder, rFolder, feed, paraStatus);
             status = 0;
         end
         %%==============================================================

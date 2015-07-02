@@ -33,10 +33,6 @@ parfor i = 1:instanceInfo.instCount
         % Run Simulation
         cmd = ['cd ' rFolder ';./super'];
         mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd, keyName, feed);
-        % Rename Output
-        [~,filename,~] = fileparts(files{j});
-        cmd = ['mv ' rFolder filesep 'super.mat ' rFolder filesep char(filename) '.mat'];
-        mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd, keyName, feed);
         if feed
             msg = ['Simulation ',num2str(j), ' on machine #',num2str(i), ' done' ];
             disp(msg);

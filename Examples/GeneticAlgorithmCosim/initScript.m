@@ -13,12 +13,12 @@ ep.createEC2Client();
 ep.initEC2Client();
 
 %% Init Instances
-% % Create Instance if there is no instance on AWS
-% numInst = 1;
-% typeInst = 't1.micro';
-% amiCode = 'ami-b98c77d2';
-% % amiCode = 'ami-33aef35a';
-% [status, msg, EC2_info] = ep.initAwsInstance(numInst,typeInst,amiCode);
+% Create Instance if there is no instance on AWS
+numInst = 4;
+typeInst = 't1.micro';
+amiCode = 'ami-b98c77d2';
+% amiCode = 'ami-33aef35a';
+[status, msg, EC2_info] = ep.initAwsInstance(numInst,typeInst,amiCode);
 
 %% Get Info
 [status, msg, EC2_info] = ep.getAwsInstanceInfo();
@@ -77,13 +77,13 @@ for i=1:numGen
     lFolder = 'schedule'; 
     ep.pushToAWS(lFolder, rFolder, false,paraStatus); 
     % Needs time to copy
-%     pause(3);
+    pause(3);
     % Run simulation on AWS
     ep.runSimulationOnAWScosim(lFolder, rFolder, false,paraStatus);
-    pause(3);
+    pause(5);
     % Move simulation result to proper folders
-    ep.moveFileOnAWSCosim(rFolder, false,paraStatus);
-%     pause(3);
+    ep.moveFileOnAWSCosim(lFolder, rFolder, false,paraStatus);
+    pause(3);
     % Fetch simulation result on AWS
     ep.fetchDataOnAWScosim(rFolder,false,paraStatus);
     % Save progress
