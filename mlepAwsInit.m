@@ -9,26 +9,27 @@
 % History: 
 % Created: 2013-09-11 by Willy Bernal
 
+%% Go to file directory
+fullname = mfilename('fullpath');
+[direc, ~, ~ ]= fileparts(fullname);
+cd(direc);
+%% Set Credentials - relative path
 % Credentials Path (Full Path to your Credentials)
-%credPath = '/YOUR/CREDENTIALS/PATH';
-credPath = '/home/avenger/Documents/Git/aws_mlep/Credentials/AwsCredentials.properties';
-% credPath = '/Users/wbernalh/Documents/git/aws_mlep/Credentials/AwsCredentials.properties';
+% credPath = '/YOUR/CREDENTIALS/PATH';
+% credPath = '/home/avenger/Documents/Git/aws_mlep/Credentials/AwsCredentials.properties';
+credPath = 'Credentials/AwsCredentials.properties';
 
 % Private Key Path (Full Path to your key)
-%keyPath = '/YOUR/PRIVATE/KEY/PATH';
-keyPath = '/home/avenger/Documents/Aws/mlepKey.pem';
-% keyPath = '/Users/wbernalh/Documents/Aws/mlepKey.pem';
+% keyPath = '/YOUR/PRIVATE/KEY/PATH';
+% keyPath = '/home/avenger/Documents/Aws/mlepKey.pem';
+keyPath = 'Credentials/mlepKey.pem';
 
 % Security Group Name
 %secGroup = 'YOUR SECURITY GROUP NAME';
 secGroup = 'mlep-sec-group';
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DO NOT MODIFY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%% DO NOT MODIFY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % MLEP-AWS HOME 
-fullname = mfilename('fullpath');
-[direc, ~, ~ ]= fileparts(fullname);
-cd(direc);
-
 addpath([direc filesep 'source' filesep 'install']);
 
 % JAVA CLASSPATH

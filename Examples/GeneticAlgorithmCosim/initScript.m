@@ -62,16 +62,17 @@ allFitness = cell(numGen,1);
 
 %% Generate initial population
 pop = genInitPop(popsize,bitPerVar,dimension);
-actGen = decodePop(pop,bitPerVar,dimension,limits);
-
-% [oneGen, actGen] = genInitPopulation(popsize,numVar,dimension,bitPerVar,Vmax,Vmin);
+popDec = decodePop(pop,bitPerVar,dimension,limits);
+figure(1);plot(popDec');
+% [oneGen, popDec] = genInitPopulation(popsize,numVar,dimension,bitPerVar,Vmax,Vmin);
 
 %% Create Schedules
-writeSchedule(popsize,actGen);
+writeSchedule(popsize,popDec);
 
 %%
-tic 
+t1 = tic; 
 for i=1:numGen
+    t2 = tic;
     disp(['========== GENERATION ' int2str(i) ' =========']);
     % Push Schedule files to AWS 
     lFolder = 'schedule'; 
@@ -105,8 +106,14 @@ for i=1:numGen
     popDec = decodePop(pop,bitPerVar,dimension,limits);
     % Generate new schedule txt files
     writeSchedule(popsize,popDec);
+    % Print Population
+    figure(1);plot(popDec');
+    toc(t2);
 end
-time = toc 
+toc(t1); 
+%% Show Generation Progress
+
+
 %% Terminate Instances
 instanceIds = EC2_info.instanceId;
 [status, msg, EC2_info] = ep.terminateAwsInstance(instanceIds);

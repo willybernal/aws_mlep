@@ -4,8 +4,10 @@
 # Credential Files
 *.properties
 *.pem
-
 .git-credentials
+
+# Autosave
+*~
 
 
 

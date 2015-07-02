@@ -16,7 +16,7 @@ rFolder = [a filesep b];
 
 % Setup Commands
 cmd_mkdir = ['mkdir ' rFolder filesep 'out'];
-cmd_mv = ['cp ' rFolder filesep '*.mat ' rFolder filesep 'out'];
+cmd_mv = ['mv ' rFolder filesep '*.mat ' rFolder filesep 'out'];
 %cmd_rm = ['rm ' rFolder 'out/*Table.csv ' rFolder 'out/*Meter.csv ' rFolder 'out/*sz.csv'];
 
 % Run Commands for all instances
@@ -24,16 +24,16 @@ parfor i = 1:instanceInfo.instCount
     allFiles= dir([lFolder num2str(i) filesep '*.txt']);
     files = {allFiles.name};
     fileNo = size(files,2);
+    % Create Dir
+    mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd_mkdir, keyName, feed);
     for j = 1:fileNo
         % Rename Output
         [~,filename,~] = fileparts(files{j});
-        cmd = ['mv ' rFolder filesep 'super.mat ' rFolder filesep char(filename) '.mat'];
+        cmd = ['mv ' rFolder filesep 'super.mat ' rFolder filesep 'out' filesep char(filename) '.mat'];
         mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd, keyName, feed);
     end
-    % Create Dir
-    mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd_mkdir, keyName, feed);
     % Copy .mat output to out/
-    mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd_mv, keyName, feed);
+%     mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd_mv, keyName, feed);
     % Remove Files
     % mlepSendCommand(instanceInfo.pubDNSName(i,:), cmd_rm, keyName, feed);
 end
