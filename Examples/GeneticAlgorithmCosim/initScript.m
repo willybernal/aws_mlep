@@ -3,6 +3,7 @@
 
 %% Parallel Computing Toolbox
 % Find command to increase NumWorkers available. (Go to menu Prallel)
+paraStatus = false;
 
 %% Create Object
 ep = mlepAwsProcess();
@@ -12,12 +13,12 @@ ep.createEC2Client();
 ep.initEC2Client();
 
 %% Init Instances
-% Create Instance if there is no instance on AWS
-numInst = 4;
-typeInst = 't2.medium';
-amiCode = 'ami-b98c77d2';
-% amiCode = 'ami-33aef35a';
-[status, msg, EC2_info] = ep.initAwsInstance(numInst,typeInst,amiCode);
+% % Create Instance if there is no instance on AWS
+% numInst = 1;
+% typeInst = 't1.micro';
+% amiCode = 'ami-b98c77d2';
+% % amiCode = 'ami-33aef35a';
+% [status, msg, EC2_info] = ep.initAwsInstance(numInst,typeInst,amiCode);
 
 %% Get Info
 [status, msg, EC2_info] = ep.getAwsInstanceInfo();
@@ -25,12 +26,12 @@ amiCode = 'ami-b98c77d2';
 %% Remove Old Files
 %Remove old file on AWS
 rFolder = '/home/ubuntu/Projects/Supermarket';
-ep.removeFolderOnAws(rFolder, false);
+ep.removeFolderOnAws(rFolder, false,paraStatus);
 
 %% Push files to EC2
 % Push Configuration files to AWS 
 lFolder = 'files'; 
-ep.pushAllToAWS(lFolder, rFolder, false); 
+ep.pushAllToAWS(lFolder,rFolder,false,paraStatus); 
 % Needs time to copy
 pause(5);
 
@@ -61,7 +62,7 @@ allFitness = cell(numGen,1);
 
 %% Generate initial population
 pop = genInitPop(popsize,bitPerVar,dimension);
-actDec = decodePop(pop,bitPerVar,dimension,limits);
+actGen = decodePop(pop,bitPerVar,dimension,limits);
 
 % [oneGen, actGen] = genInitPopulation(popsize,numVar,dimension,bitPerVar,Vmax,Vmin);
 
@@ -74,16 +75,17 @@ for i=1:numGen
     disp(['========== GENERATION ' int2str(i) ' =========']);
     % Push Schedule files to AWS 
     lFolder = 'schedule'; 
-    ep.pushToAWS(lFolder, rFolder, false); 
+    ep.pushToAWS(lFolder, rFolder, false,paraStatus); 
     % Needs time to copy
-    pause(3);
+%     pause(3);
     % Run simulation on AWS
-    ep.runSimulationOnAWScosim(lFolder, rFolder, false);
-    % Move simulation result to proper folders
-    ep.moveFileOnAWSCosim(rFolder, false);
+    ep.runSimulationOnAWScosim(lFolder, rFolder, false,paraStatus);
     pause(3);
+    % Move simulation result to proper folders
+    ep.moveFileOnAWSCosim(rFolder, false,paraStatus);
+%     pause(3);
     % Fetch simulation result on AWS
-    ep.fetchDataOnAWScosim(rFolder,false);
+    ep.fetchDataOnAWScosim(rFolder,false,paraStatus);
     % Save progress
     allSchedule{i} = pop;
     outFolder = 'Output';

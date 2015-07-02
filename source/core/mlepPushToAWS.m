@@ -1,4 +1,4 @@
-function [indMap] = mlepPushToAWS(instanceInfo, keyName, lFolder, rFolder, feed)
+function [indMap] = mlepPushToAWS(instanceInfo, keyName, lFolder, rFolder, feed,paraStatus)
 %MLEPPUSHTOAWS Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -13,8 +13,10 @@ indMap = indMap(1:size(files,2));
 indMap = sort(indMap);
 
 % Check Matlab Pool
-if isempty(gcp('nocreate'))
-    parpool(instanceInfo.instCount);
+if paraStatus
+    if isempty(gcp('nocreate'))
+        parpool(instanceInfo.instCount);
+    end
 end
 
 [a, b, c] = fileparts(rFolder);

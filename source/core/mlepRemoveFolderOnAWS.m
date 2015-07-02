@@ -1,10 +1,12 @@
-function mlepRemoveFolderOnAWS(instanceInfo, keyName, rFolder, feed)
+function mlepRemoveFolderOnAWS(instanceInfo,keyName,rFolder,feed,paraStatus)
 %REMOVEFOLDERONAWS Summary of this function goes here
 %   Detailed explanation goes here
 % remove from aws
 % Check Matlab Pool
-if isempty(gcp('nocreate'))
-    parpool(instanceInfo.instCount);
+if paraStatus
+    if isempty(gcp('nocreate'))
+        parpool(instanceInfo.instCount);
+    end
 end
 
 % Remove File from cloud

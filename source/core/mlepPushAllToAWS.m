@@ -1,4 +1,4 @@
-function mlepPushAllToAWS(instanceInfo, keyName, lFolder, rFolder, feed)
+function mlepPushAllToAWS(instanceInfo,keyName,lFolder,rFolder,feed,paraStatus)
 %MLEPPUSHTOAWS Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,8 +8,10 @@ files = {allFiles.name};
 files = files(3:end);
 
 % Check Matlab Pool
-if isempty(gcp('nocreate'))
-    parpool(instanceInfo.instCount);
+if paraStatus
+    if isempty(gcp('nocreate'))
+        parpool(instanceInfo.instCount);
+    end
 end
 
 % Create Command mkdir

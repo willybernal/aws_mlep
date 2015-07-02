@@ -103,21 +103,21 @@ classdef mlepAwsProcess < handle
             msg = '';
         end
         %%==============================================================
-        function removeFolderOnAws(obj,rFolder,feed)
+        function removeFolderOnAws(obj,rFolder,feed,paraStatus)
             if ~isempty(obj.ec2Info)
-                mlepRemoveFolderOnAWS(obj.ec2Info,obj.keyPath,rFolder,feed);
+                mlepRemoveFolderOnAWS(obj.ec2Info,obj.keyPath,rFolder,feed,paraStatus);
             else
                 error('Need to call first getAWSInstanceInfo');
             end
         end
         %%==============================================================
-        function status = pushToAWS(obj, lFolder, rFolder, feed)
-            [obj.indMap] = mlepPushToAWS(obj.ec2Info, obj.keyPath, lFolder, rFolder, feed);
+        function status = pushToAWS(obj,lFolder,rFolder,feed,paraStatus)
+            [obj.indMap] = mlepPushToAWS(obj.ec2Info,obj.keyPath,lFolder,rFolder,feed,paraStatus);
             status = 0;
         end
         %%==============================================================
-        function status = pushAllToAWS(obj, lFolder, rFolder, feed)
-            mlepPushAllToAWS(obj.ec2Info, obj.keyPath, lFolder, rFolder, feed);
+        function status = pushAllToAWS(obj,lFolder,rFolder,feed,paraStatus)
+            mlepPushAllToAWS(obj.ec2Info,obj.keyPath,lFolder,rFolder,feed,paraStatus);
             status = 0;
         end
         %%==============================================================
@@ -131,18 +131,18 @@ classdef mlepAwsProcess < handle
             status = 0;
         end
         %%==============================================================
-        function status = runSimulationOnAWScosim(obj, lFolder, rFolder, feed)
-            mlepRunSimulationCosim(obj.ec2Info, obj.keyPath, lFolder, rFolder, feed);
+        function status = runSimulationOnAWScosim(obj, lFolder, rFolder, feed, paraStatus)
+            mlepRunSimulationCosim(obj.ec2Info, obj.keyPath, lFolder, rFolder, feed, paraStatus);
             status = 0;
         end
         %%==============================================================
-        function status = moveFileOnAWS(obj, rFolder, feed)
-            mlepMoveFileOnAWS(obj.ec2Info, obj.keyPath, rFolder, feed);
+        function status = moveFileOnAWS(obj,rFolder,feed)
+            mlepMoveFileOnAWS(obj.ec2Info,obj.keyPath,rFolder,feed);
             status = 0;
         end
         %%==============================================================
-        function status = moveFileOnAWSCosim(obj, rFolder, feed)
-            mlepMoveFileOnAWSCosim(obj.ec2Info, obj.keyPath, rFolder, feed);
+        function status = moveFileOnAWSCosim(obj, rFolder, feed,paraStatus)
+            mlepMoveFileOnAWSCosim(obj.ec2Info, obj.keyPath, rFolder, feed, paraStatus);
             status = 0;
         end
         %%==============================================================
@@ -151,13 +151,13 @@ classdef mlepAwsProcess < handle
             status = 0;
         end
         %%==============================================================
-        function status = fetchDataOnAWScosim(obj, rFolder, feed)
-            mlepFetchDataOnAWScosim(obj.ec2Info, obj.keyPath, rFolder,feed);
+        function status = fetchDataOnAWScosim(obj, rFolder, feed, paraStatus)
+            mlepFetchDataOnAWScosim(obj.ec2Info, obj.keyPath, rFolder, feed, paraStatus);
             status = 0;
         end
         %%==============================================================
-        function [status, msg, EC2_info] = terminateAwsInstance(obj,instanceIds)
-            EC2_info = mlepTerminateInstanceOnAws(obj.ec2Client,obj.keyPath,obj.secGroup,instanceIds);
+        function [status, msg, EC2_info] = terminateAwsInstance(obj, instanceIds)
+            EC2_info = mlepTerminateInstanceOnAws(obj.ec2Client, obj.keyPath, obj.secGroup, instanceIds);
             obj.ec2Inst = EC2_info;
             status = 0;
             msg = '';

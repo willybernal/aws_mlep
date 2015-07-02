@@ -1,11 +1,13 @@
-function mlepFetchDataOnAWScosim(instanceInfo,keyName,rFolder,feed)
+function mlepFetchDataOnAWScosim(instanceInfo,keyName,rFolder,feed,paraStatus)
 %MLEPFETCHDATAONAWS This function fetches all the .csv files from the cloud
 % instances
 % (C) 2013 by Willy Bernal(willyg@seas.upenn.edu)
 
 % Last update: 2013-09-11 by Willy Bernal
-if isempty(gcp('nocreate'))
-    parpool(instanceInfo.instCount);
+if paraStatus
+    if isempty(gcp('nocreate'))
+        parpool(instanceInfo.instCount);
+    end
 end
 
 if exist('Output', 'dir')
@@ -26,7 +28,7 @@ parfor i = 1:instanceInfo.instCount
         [stastus, msg] = system(cmd, '-echo');
     else
         [stastus, msg] = system(cmd);
-    end        
+    end
 end
 
 end

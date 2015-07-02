@@ -11,11 +11,13 @@
 
 % Credentials Path (Full Path to your Credentials)
 %credPath = '/YOUR/CREDENTIALS/PATH';
-credPath = '/home/avenger/Documents/Git/aws-mlep_v1.0/Credentials/AwsCredentials.properties';
+% credPath = '/home/avenger/Documents/Git/aws-mlep_v1.0/Credentials/AwsCredentials.properties';
+credPath = '/Users/wbernalh/Documents/git/aws_mlep/Credentials/AwsCredentials.properties';
 
 % Private Key Path (Full Path to your key)
 %keyPath = '/YOUR/PRIVATE/KEY/PATH';
-keyPath = '/home/avenger/Documents/Aws/mlepKey.pem';
+% keyPath = '/home/avenger/Documents/Aws/mlepKey.pem';
+keyPath = '/Users/wbernalh/Documents/Aws/mlepKey.pem';
 
 % Security Group Name
 %secGroup = 'YOUR SECURITY GROUP NAME';
