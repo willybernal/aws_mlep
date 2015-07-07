@@ -1,13 +1,56 @@
-# Object File
-*.o
+# Build and Release Folders
+bin/
+bin-debug/
+bin-release/
 
-# Credential Files
-*.properties
-*.pem
-.git-credentials
+# Other files and folders
+.settings/
 
-# Autosave
+# EnergyPlus outputs
+Output/*
+Output
+
+# Code Generation
+*.mexa64
+*.mex*
+*.mexmaci64
+slprj
+*_rtw
+
+# Matlab
+*.autosave
 *~
+# MLE+
+*.6
+socket.cfg
+utilSocket.log
+*.log
+
+# E+
+*.err
+*.eio
+*.eso
+*.bnd
+*.audit
+*.end
+*.mdd
+*.shd
+*.sql
+*.csv
+*.idd
+*.ini
+*.epw
+*.htm
+*.mtd
+*.rdd
+in.idf
+
+# AWS Credentials
+*.pem
+*.properties
+Credentials
 
 
-
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.

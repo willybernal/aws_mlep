@@ -16,12 +16,10 @@ cd(direc);
 %% Set Credentials - relative path
 % Credentials Path (Full Path to your Credentials)
 % credPath = '/YOUR/CREDENTIALS/PATH';
-% credPath = '/home/avenger/Documents/Git/aws_mlep/Credentials/AwsCredentials.properties';
 credPath = fullfile(direc, 'Credentials/AwsCredentials.properties');
 
 % Private Key Path (Full Path to your key)
 % keyPath = '/YOUR/PRIVATE/KEY/PATH';
-% keyPath = '/home/avenger/Documents/Aws/mlepKey.pem';
 keyPath = fullfile(direc, 'Credentials/mlepKey.pem');
 
 % Security Group Name
