@@ -19,13 +19,13 @@ system(cmd);
 %% Set GA parameters
 popsize = 4;                        % Population Size
 numVar = 1;
-dimension = 24;                     % Dimension/Number of Variables
+dimension = 8;                     % Dimension/Number of Variables
 bitPerVar = 2;                      % Bits per variable
 chromoLen = dimension * bitPerVar;  % Chromosom Length
 numGen = 5;                         % Number of Generations
 limits = ones(2,dimension);         % Limits for each dimension
-Vmax = -10;                         % Max Variable Value
-Vmin = -30;                         % Min Variable Value
+Vmax = -15;                         % Max Variable Value
+Vmin = -25;                         % Min Variable Value
 limits(1,:) = Vmin;                 % Min Value                  
 limits(2,:) = Vmax;                 % Max Value
 for i = 1:dimension                 % Fields
