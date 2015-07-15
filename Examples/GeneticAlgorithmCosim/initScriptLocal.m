@@ -106,3 +106,12 @@ end
 toc(t1); 
 %% Show Generation Progress
 
+maxFitness = zeros(1,numGen);
+meanFitness = zeros(1,numGen);
+minFitness = zeros(1,numGen);
+
+for i=1:numGen
+    maxFitness(i) = max(allFitness{i});
+    meanFitness(i) = mean(allFitness{i});
+    minFitness(i) = min(allFitness{i});
+end
