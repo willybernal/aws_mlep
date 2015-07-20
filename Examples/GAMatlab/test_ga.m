@@ -26,9 +26,9 @@ UB = -15*ones(1,nvars);  % Upper bound
 % 'MutationFcn',@mutationadaptfeasible;
 popsize = 24;
 elite = ceil(0.2*popsize);
-numgen = 5;
+numgen = 10;
 tic
-options = gaoptimset('PopulationSize',popsize,'Generations',numgen,'PlotFcns',{@gaplotbestf},'Display','iter');
-[x,fval] = ga(ObjectiveFunction,nvars,[],[],[],[],LB,UB,ConstraintFunction,options); 
+options = gaoptimset('OutputFcns',@savePop,'PopulationSize',popsize,'Generations',numgen,'PlotFcns',{@gaplotbestf},'Display','iter');
+[x,fval,exit_flag,output,population,scores] = ga(ObjectiveFunction,nvars,[],[],[],[],LB,UB,[],options); %  ConstraintFunction
 toc 
 

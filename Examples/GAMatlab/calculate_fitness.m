@@ -13,10 +13,10 @@ cd(rFolder);
 % Simulate
 cmd = ['./super'];
 system(cmd);
-pause(2);
+pause(1);
 
 load('super.mat');
-y = sum(rt_yout(:,1))
+y = sum(rt_yout(:,1));
 
 % Come back
 cd(direc);

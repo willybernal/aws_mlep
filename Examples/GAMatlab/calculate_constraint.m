@@ -1,6 +1,9 @@
 function [c, ceq] = calculate_constraint(input)
 rFolder = 'Supermarket';
 
+%% Create Schedules
+writeScheduleSingle(input);
+
 % Change Dir
 fullname = mfilename('fullpath');
 [direc, ~, ~ ]= fileparts(fullname);
@@ -9,10 +12,10 @@ cd(rFolder);
 % Simulate
 cmd = ['./super'];
 system(cmd);
-pause(2);
+pause(1);
 
 load('super.mat');
-tprod = rt_yout(:,7);
+tprod = rt_yout(:,6);
 
 
 % Come back
