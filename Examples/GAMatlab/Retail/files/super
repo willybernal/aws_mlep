@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE BCVTB-variables
+  SYSTEM "variables.dtd">
+<BCVTB-variables><!--INPUT-->
+   <variable source="Ptolemy">
+      <EnergyPlus schedule="cool_sch"/>
+   </variable>
+   <variable source="Ptolemy">
+      <EnergyPlus schedule="RefridSch"/>
+   </variable><!--OUTPUT-->
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Environment" type="Site Outdoor Air Drybulb Temperature"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Core_Retail" type="Zone Mean Air Temperature"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Back_Space" type="Zone Mean Air Temperature"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Point_Of_Sale" type="Zone Mean Air Temperature"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Front_Entry" type="Zone Mean Air Temperature"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Front_Retail" type="Zone Mean Air Temperature"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Whole building" type="Facility Total Building Electric Demand Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Whole building" type="Facility Total HVAC Electric Demand Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="Core_Retail" type="Zone Other Equipment Total Heating Rate"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:1_Unitary_Package_fan" type="Fan Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:2_Unitary_Package_fan" type="Fan Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:3_Unitary_Package_fan" type="Fan Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:4_Unitary_Package_fan" type="Fan Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:1_Unitary_Package_CoolCoil" type="Cooling Coil Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:2_Unitary_Package_CoolCoil" type="Cooling Coil Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:3_Unitary_Package_CoolCoil" type="Cooling Coil Electric Power"/>
+   </variable>
+   <variable source="EnergyPlus">
+      <EnergyPlus name="PSZ-AC:4_Unitary_Package_CoolCoil" type="Cooling Coil Electric Power"/>
+   </variable>
+</BCVTB-variables>
