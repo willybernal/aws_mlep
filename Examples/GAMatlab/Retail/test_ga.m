@@ -24,9 +24,9 @@ LB = [-24 -24 -24 -24 -24 -24 -24 -24 21 21 21 21 21 21 21 21]; % Lower bound
 UB = [-8  -8  -8  -8  -8  -8  -8  -8  24 24 24 24 24 24 24 24]; % Upper bound
 
 % 'MutationFcn',@mutationadaptfeasible;
-popsize = 30;
+popsize = 35;
 elite = ceil(0.1*popsize);
-numgen = 10;
+numgen = 15;
 
 tic
 options = gaoptimset('OutputFcns',@savePop,'PopulationSize',popsize,'Generations',numgen,'PlotFcns',{@gaplotbestf},'Display','iter');
