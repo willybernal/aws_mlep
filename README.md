@@ -29,7 +29,4 @@ This is an example to try multiple construction material properties as well as d
 
 Seartch Optimization: Genetic Algorithm
 --------------------------------------
-This examples use the search optimization to find an optimal based on a objective function. 
-
-1. 
-2. 
+This examples use the search optimization to find an optimal based on a objective function.
